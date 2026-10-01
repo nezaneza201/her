@@ -166,9 +166,18 @@ export default function Home() {
           <section className="songMemory">
             <div className="songVinyl">♪</div>
             <p className="eyebrow">OUR LITTLE SOUNDTRACK</p>
-            <h2>One day, this distance will be a <em>memory.</em></h2>
-            <p>Put on the song that reminds you of us. Let it play while you read this again. One day, we'll hear it together in the same place.</p>
-            <div className="songLine">our song · our story · our next chapter</div>
+            <h2><em>Risk It All</em></h2>
+            <p className="songArtist">Bruno Mars</p>
+            <p>Our song for the miles between us. Press play, let it play while you read this again, and remember that one day we&apos;ll hear it together in the same place.</p>
+            <div className="songPlayer">
+              <iframe
+                src="https://www.youtube.com/embed/lY5V4hSLWY8?rel=0"
+                title="Risk It All — Bruno Mars"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            <div className="songLine">Risk It All · Bruno Mars · our story · our next chapter</div>
           </section>
 
           <section className="secretSection">
