@@ -1,138 +1,49 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap");
 
-:root {
-  --bg: #10070d;
-  --card: rgba(31, 12, 21, .78);
-  --line: rgba(255, 197, 215, .14);
-  --text: #fff5f8;
-  --muted: #cdb8c0;
-  --pink: #ff4f86;
-  --pink2: #ff8fb0;
-  --shadow: 0 30px 90px rgba(0,0,0,.45);
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; }
-body {
-  background: radial-gradient(circle at 50% 0%, #35101f 0, var(--bg) 48%, #080408 100%);
-  color: var(--text);
-  font-family: "DM Sans", sans-serif;
-}
-button, input { font: inherit; }
-button { cursor: pointer; }
-.screen {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 28px 18px;
-  position: relative;
-  overflow: hidden;
-}
-.card {
-  width: min(92vw, 560px);
-  padding: clamp(34px, 7vw, 64px);
-  border: 1px solid var(--line);
-  border-radius: 34px;
-  background: linear-gradient(145deg, rgba(55,18,35,.82), var(--card));
-  box-shadow: var(--shadow), inset 0 1px rgba(255,255,255,.04);
-  backdrop-filter: blur(20px);
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-.glow {
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: .22;
-  background: #ff3e78;
-}
-.glowOne { top: -120px; left: -100px; }
-.glowTwo { bottom: -130px; right: -90px; }
-.heart {
-  color: var(--pink);
-  font-size: 64px;
-  line-height: 1;
-  margin-bottom: 28px;
-  text-shadow: 0 0 35px rgba(255,79,134,.4);
-}
-.bigHeart { font-size: 72px; }
-.eyebrow {
-  color: var(--pink2);
-  letter-spacing: .18em;
-  font-size: 11px;
-  font-weight: 700;
-  margin: 0 0 14px;
-}
-h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(42px, 8vw, 66px);
-  line-height: .98;
-  margin: 0;
-}
-.question { font-size: 18px; color: var(--muted); margin: 22px 0 4px; }
-.lead {
-  color: #f4dce4;
-  font-size: 17px;
-  line-height: 1.6;
-  margin: 14px auto 28px;
-  max-width: 430px;
-}
-.actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-.primary, .secondary, .add {
-  border: 0;
-  border-radius: 999px;
-  min-height: 52px;
-  padding: 0 24px;
-  font-weight: 700;
-  transition: transform .2s, box-shadow .2s, opacity .2s;
-}
-.primary {
-  color: white;
-  background: linear-gradient(135deg,#ff3f78,#ff6d98);
-  box-shadow: 0 12px 35px rgba(255,63,120,.28);
-}
-.primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(255,63,120,.38); }
-.primary:disabled { opacity: .6; cursor: wait; }
-.secondary {
-  color: #ffe4ec;
-  background: rgba(255,255,255,.07);
-  border: 1px solid var(--line);
-}
-.secondary:hover { transform: translateY(-2px); }
-.playful { color: var(--pink2); font-size: 13px; margin: 18px 0 0; }
-.confetti { position: absolute; color: #ff91b0; font-size: 38px; letter-spacing: 18px; opacity: .55; top: 14%; }
-.promiseList { display: grid; gap: 9px; text-align: left; margin: 24px 0; }
-.promise {
-  padding: 13px 15px;
-  border-radius: 15px;
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.07);
-  color: #f9e9ee;
-  font-size: 14px;
-}
-.promise span { color: var(--pink2); margin-right: 9px; }
-.composer { display: flex; gap: 8px; margin: 18px 0 14px; }
-.composer input {
-  flex: 1;
-  min-width: 0;
-  height: 50px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  outline: none;
-  padding: 0 15px;
-  color: white;
-  background: rgba(0,0,0,.22);
-}
-.composer input:focus { border-color: rgba(255,143,176,.55); }
-.add {
-  width: 50px;
-  padding: 0;
-  color: white;
-  background: rgba(255,255,255,.1);
-  border: 1px solid var(--line);
-  font-size: 24px;
-}
-.tiny { color: #9f838d; font-size: 11px; margin: 16px 0 0; }
-.error { color: #ff9aae; font-size: 13px; }
+:root{--bg:#09040a;--rose:#ff6f9d;--rose2:#ffb3c8;--cream:#fff4f7;--muted:#c9aeb9;--glass:rgba(28,11,20,.72);--line:rgba(255,190,210,.16)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#09040a;color:var(--cream);font-family:"DM Sans",sans-serif}
+button{font:inherit;cursor:pointer}
+.lovePage,.letterLanding{min-height:100vh;overflow:hidden;position:relative;background:radial-gradient(circle at 50% 0,#351124 0,#120711 38%,#070307 100%)}
+.letterLanding{display:grid;place-items:center;padding:24px}
+.landingGlow,.aurora{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.landingGlow{width:480px;height:480px;background:#ff3978;opacity:.15}
+.aurora{width:420px;height:420px;background:#ff3978;opacity:.12}
+.auroraOne{top:-180px;left:-160px}.auroraTwo{right:-180px;bottom:15%}
+.envelope{width:min(92vw,620px);text-align:center;padding:70px 35px;border:1px solid var(--line);border-radius:42px;background:linear-gradient(145deg,rgba(58,19,39,.8),rgba(19,8,15,.82));box-shadow:0 35px 120px rgba(0,0,0,.5),inset 0 1px rgba(255,255,255,.06);backdrop-filter:blur(24px);position:relative;z-index:2}
+.miniHeart,.heroHeart{color:var(--rose);text-shadow:0 0 35px rgba(255,91,140,.65)}
+.miniHeart{font-size:70px;animation:pulse 2.2s infinite}
+.eyebrow{margin:0 0 14px;color:var(--rose2);font-size:11px;font-weight:700;letter-spacing:.24em}
+.envelope h1,.loveHero h1,.letter h2,.promiseSection h2,.distance h2,.finalNote h2{font-family:"Cormorant Garamond",serif}
+.envelope h1{font-size:clamp(55px,10vw,86px);line-height:.83;margin:8px 0 25px}
+.envelope>p:not(.eyebrow){color:var(--muted);font-size:16px;line-height:1.7;max-width:420px;margin:0 auto 28px}
+.primary{border:0;border-radius:999px;padding:15px 26px;color:#fff;font-weight:700;background:linear-gradient(135deg,#ff3f78,#ff83a7);box-shadow:0 14px 40px rgba(255,63,120,.25);transition:.25s}
+.primary:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(255,63,120,.4)}
+.openLetter{font-size:15px}.openLetter span{margin-left:8px;font-size:20px}
+.scrollHint{margin-top:25px;color:#80636f;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.floatingHearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.floatingHearts span{position:absolute;left:calc(8% + var(--i)*12%);bottom:-40px;color:rgba(255,137,169,.24);font-size:18px;animation:float 12s linear infinite;animation-delay:calc(var(--i)*-1.5s)}
+.loveHero{position:relative;z-index:2;text-align:center;padding:115px 22px 75px}
+.loveHero h1{font-size:clamp(55px,10vw,100px);line-height:.82;margin:0}
+.loveHero h1 em,.distance h2 em,.finalNote h2 em{color:var(--rose2);font-style:italic}
+.heroHeart{font-size:54px;margin:32px 0 12px;animation:pulse 2.2s infinite}
+.heroSub{color:var(--muted);font-size:14px;letter-spacing:.05em}
+.letter{position:relative;z-index:2;width:min(91vw,760px);margin:0 auto 110px;padding:clamp(30px,6vw,65px);border:1px solid var(--line);border-radius:34px;background:var(--glass);box-shadow:0 30px 100px rgba(0,0,0,.4);backdrop-filter:blur(20px);font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.65;color:#f8e7ec}
+.letter p{margin:0 0 24px}.letter strong{color:#fff}.salutation{font-size:36px!important;color:var(--rose2)}
+.quote{margin:38px 0;padding:30px 25px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;font-size:27px;font-style:italic;color:#ffd9e4}.quote span{color:var(--rose);font-size:50px;vertical-align:-10px;margin:0 8px}
+.signature{display:flex;flex-direction:column;align-items:flex-end;margin-top:45px;font-size:18px;color:var(--muted)}.signature strong{font-size:28px;color:var(--rose2);margin-top:5px}
+.promiseSection{position:relative;z-index:2;width:min(92vw,1080px);margin:0 auto 115px}
+.sectionIntro{text-align:center;margin-bottom:42px}.sectionIntro h2{font-size:clamp(43px,7vw,66px);line-height:.9;margin:0 0 15px}.sectionIntro>p:last-child{max-width:580px;margin:auto;color:var(--muted);line-height:1.7}
+.promiseGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.promiseCard{padding:27px;border:1px solid var(--line);border-radius:25px;background:linear-gradient(145deg,rgba(39,15,28,.7),rgba(15,7,12,.65));box-shadow:0 18px 60px rgba(0,0,0,.2);transition:.3s}
+.promiseCard:hover{transform:translateY(-5px);border-color:rgba(255,151,180,.3);background:rgba(55,19,38,.75)}
+.promiseNumber{color:var(--rose);font-size:12px;font-weight:700;letter-spacing:.15em;margin-bottom:20px}.promiseCard h3{font-family:"Cormorant Garamond",serif;font-size:30px;margin:0 0 10px}.promiseCard p{color:var(--muted);line-height:1.65;font-size:14px;margin:0}
+.herSide{padding-top:10px}
+.distance{position:relative;z-index:2;width:min(92vw,850px);margin:0 auto 120px;text-align:center;padding:65px 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.distanceOrb{font-family:"Cormorant Garamond",serif;font-size:85px;line-height:1;color:var(--rose);text-shadow:0 0 40px rgba(255,87,137,.35)}
+.distance h2{font-size:clamp(48px,8vw,75px);line-height:.88;margin:8px 0 25px}.distance>p:not(.eyebrow){max-width:650px;margin:0 auto 25px;color:var(--muted);line-height:1.75;font-size:15px}.ruleLine{color:var(--rose2);font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:2}
+.finalNote{position:relative;z-index:2;width:min(92vw,760px);margin:0 auto;padding:60px 30px 120px;text-align:center}.finalNote h2{font-size:clamp(45px,7vw,68px);line-height:.9;margin:0 0 25px}.finalNote>p:not(.eyebrow){color:var(--muted);line-height:1.75;font-size:15px}.finalSignature{display:flex;flex-direction:column;margin-top:38px;color:var(--muted);font-family:"Cormorant Garamond",serif;font-size:20px}.finalSignature strong{font-size:32px;color:var(--rose2);margin-top:6px}
+.backTop{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(28,10,20,.85);color:var(--rose2);z-index:20;backdrop-filter:blur(12px)}
+@keyframes pulse{50%{transform:scale(1.1);text-shadow:0 0 55px rgba(255,91,140,.85)}}@keyframes float{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:1}100%{transform:translateY(-110vh) rotate(180deg);opacity:0}}
+@media(max-width:700px){.envelope{padding:55px 24px}.promiseGrid{grid-template-columns:1fr}.letter{font-size:19px}.loveHero{padding-top:90px}.ruleLine{letter-spacing:.1em}.signature{align-items:center}}
