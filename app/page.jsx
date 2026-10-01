@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 const initialPromises = ["I promise to choose you.", "I promise to make you smile."];
+const GOOGLE_FORM_URL = "PASTE_YOUR_GOOGLE_FORM_LINK_HERE";
 
 export default function Home() {
   const [step, setStep] = useState("proposal");
   const [promises, setPromises] = useState(initialPromises);
   const [newPromise, setNewPromise] = useState("");
   const [noCount, setNoCount] = useState(0);
-  const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
   const addPromise = () => {
@@ -19,22 +19,24 @@ export default function Home() {
     setNewPromise("");
   };
 
-  const sealPromises = async () => {
-    setSending(true);
+  const sealPromises = () => {
     setError("");
-    try {
-      const response = await fetch("/api/queen-response", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answer: "YES", promises }),
-      });
-      if (!response.ok) throw new Error();
-      setStep("sealed");
-    } catch {
-      setError("I couldn't send the message right now. Please try again.");
-    } finally {
-      setSending(false);
+
+    if (GOOGLE_FORM_URL === "PASTE_YOUR_GOOGLE_FORM_LINK_HERE") {
+      setError("Add your Google Form link in app/page.jsx first.");
+      return;
     }
+
+    const responseText = [
+      "Queen answered: YES ❤️",
+      "",
+      "Her promises:",
+      ...promises.map((promise, index) => `${index + 1}. ${promise}`),
+    ].join("\n");
+
+    navigator.clipboard?.writeText(responseText).catch(() => {});
+    window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+    setStep("sealed");
   };
 
   if (step === "sealed") {
@@ -100,10 +102,10 @@ export default function Home() {
             <button className="add" onClick={addPromise}>+</button>
           </div>
           {error && <p className="error">{error}</p>}
-          <button className="primary" onClick={sealPromises} disabled={sending}>
-            {sending ? "Sealing..." : "Seal our promises ❤️"}
+          <button className="primary" onClick={sealPromises}>
+            Seal our promises ❤️
           </button>
-          <p className="tiny">Your answer will be sent privately to me.</p>
+          <p className="tiny">One simple Google Form will collect your response. 💌</p>
         </section>
       </main>
     );
