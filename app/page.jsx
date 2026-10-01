@@ -109,7 +109,7 @@ export default function Home() {
     );
   }
 
-  const noLabels = ["NO 😭", "Are you sure? 🥺", "Really? 😭", "Think again 😭", "You can&apos;t escape ❤️"];
+  const noLabels = ["NO 😭", "Are you sure? 🥺", "Really? 😭", "Think again 😭", "You can't escape ❤️"];
 
   return (
     <main className="screen">
