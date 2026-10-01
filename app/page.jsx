@@ -55,7 +55,13 @@ export default function Home() {
 
   const openLetter = () => {
     setShowLetter(true);
-    setTimeout(() => document.getElementById("letter")?.scrollIntoView({ behavior: "smooth" }), 80);
+    setTimeout(() => {
+      document.getElementById("letter")?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("loveSong")?.contentWindow?.postMessage(
+        '{"event":"command","func":"playVideo","args":""}',
+        "*"
+      );
+    }, 80);
   };
 
   return (
@@ -171,13 +177,15 @@ export default function Home() {
             <p>Our song for the miles between us. Press play, let it play while you read this again, and remember that one day we&apos;ll hear it together in the same place.</p>
             <div className="songPlayer">
               <iframe
-                src="https://www.youtube.com/embed/lY5V4hSLWY8?rel=0"
+                id="loveSong"
+                src="https://www.youtube.com/embed/lY5V4hSLWY8?autoplay=1&controls=1&loop=1&playlist=lY5V4hSLWY8&rel=0&enablejsapi=1"
                 title="Risk It All — Bruno Mars"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
             </div>
             <div className="songLine">Risk It All · Bruno Mars · our story · our next chapter</div>
+            <p className="songNote">🎧 The music starts when you open my heart.</p>
           </section>
 
           <section className="secretSection">
