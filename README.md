@@ -2,12 +2,14 @@
 
 A private romantic proposal site for Queen.
 
-## Vercel environment variables
+## Simple response setup
 
-Set these in Vercel before enabling email delivery:
+This version does **not** use Resend, API keys, databases, or email APIs.
 
-- RESEND_API_KEY
-- RESEND_FROM_EMAIL
-- QUEEN_RESPONSE_EMAIL=nezaneza201@gmail.com
+Create a Google Form with questions for Queen's answer and promises, then place the form link in `app/page.jsx` as `GOOGLE_FORM_URL`.
 
-The frontend is Vercel/Next.js compatible and the response API uses Resend server-side, so the API key is never exposed to the browser.
+Responses will be stored in Google Forms/Google Sheets, where you can enable email notifications.
+
+## Vercel
+
+No environment variables are required for the proposal site.
