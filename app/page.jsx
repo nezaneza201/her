@@ -1,79 +1,258 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const promisesToHer = [
-["Communication","I promise I will not let distance become silence. I will talk to you, listen to you, check on you, and make space for us even on busy days."],
-["Loyalty","I promise to protect what we have. I will choose you when you are near and when you are far away."],
-["Respect","I promise to respect your feelings, boundaries, dreams, time, and the woman you are becoming."],
-["Softness","I promise to be gentle with your heart. When you are tired or hurting, I will listen before I judge."],
-["Trust","I promise to ask instead of assuming, communicate instead of disappearing, and choose understanding over suspicion."],
-["Your time","I promise to make time for you. Good mornings, good nights, calls, little updates and simply showing up."],
-["Patience","I promise to remember that it is us against the problem, never me against you."]
+const myPromises = [
+  {
+    title: "To choose you, even from far away",
+    text: "I promise that distance will never make you feel forgotten. I will keep choosing you in the ordinary days, the difficult days, and every beautiful day in between."
+  },
+  {
+    title: "To communicate, not disappear",
+    text: "I promise to talk to you honestly. When life gets busy, I will communicate instead of leaving you wondering. I will make time for our calls, our messages, our little updates, and our conversations that somehow turn into hours."
+  },
+  {
+    title: "To give you my loyalty",
+    text: "I promise to protect what we are building. My attention, my intentions, and my heart will not be playing games behind your back. I want you to feel secure with me, not suspicious of me."
+  },
+  {
+    title: "To respect your heart",
+    text: "I promise to respect your boundaries, your opinions, your choices, your dreams, your family, and the person you are becoming. Loving you should never mean controlling you."
+  },
+  {
+    title: "To be soft with you",
+    text: "I promise to remember that you are someone I love, not someone I need to defeat in an argument. Even when we disagree, I will try to speak with patience, kindness, and softness."
+  },
+  {
+    title: "To trust you",
+    text: "I promise to build trust instead of demanding it. I will not punish you for things you did not do, and I will give you the honesty and consistency that make trust feel safe."
+  },
+  {
+    title: "To make time for you",
+    text: "I promise that 'I'm busy' will never become an excuse for making you feel unimportant. I will make room for you because you are part of my life, not an interruption to it."
+  },
+  {
+    title: "To keep growing with you",
+    text: "I promise to keep becoming a better man—not only for myself, but for the future we may build together. I want us to grow without growing apart."
+  }
 ];
 
-const promisesFromHer = [
-["Communication","Talk to me when you miss me, when something hurts, when you are happy, and when you need me. Don't make me guess what is happening in your heart."],
-["Your time","I don't need every second of your day. I just want to feel that I have a place in it and that I am remembered."],
-["Loyalty","Be loyal when nobody is watching, especially when distance makes it easy to feel alone."],
-["Respect","Respect my heart, boundaries, dreams, and feelings. Even when we disagree, never forget the love underneath the argument."],
-["Softness","Keep your heart soft with me. Let me come to you without being afraid that my feelings are too much."],
-["Trust","Trust me enough to communicate before you doubt me. If something feels wrong, come to me and let us talk."],
-["Effort","Promise that distance will never become an excuse to stop trying. We may not be in the same place, but we can keep choosing each other."]
+const herPromises = [
+  {
+    title: "Communicate with me",
+    text: "Promise me that when something is wrong, you will tell me instead of silently carrying it alone. Let us talk through the distance, not let the distance talk for us."
+  },
+  {
+    title: "Give me your time",
+    text: "I don't need every minute of your day. I just want some of your real time—the little calls, random texts, good mornings, good nights, and moments where it feels like we're together."
+  },
+  {
+    title: "Be loyal to us",
+    text: "Promise me that while we are apart, you will protect the relationship we chose. No secret games, no unnecessary situations, no making each other compete for a place we already promised to give each other."
+  },
+  {
+    title: "Respect me",
+    text: "Promise me that even when we disagree, you will never intentionally make me feel small. Let respect remain the floor beneath everything we build."
+  },
+  {
+    title: "Stay soft with me",
+    text: "Promise me that your heart will remain gentle with mine. When I miss you, when I'm tired, when I'm insecure, give me reassurance before judgment. Let home be something we feel in each other."
+  },
+  {
+    title: "Trust me",
+    text: "Promise me that you will trust what we are building. Ask me when you are unsure. Talk to me before assuming. Let honesty be stronger than fear."
+  },
+  {
+    title: "Don't let distance become an excuse",
+    text: "Promise me that the miles will be a challenge we face together, not a reason to stop trying. Even on the hardest days, let's remember why we started."
+  },
+  {
+    title: "Keep choosing us",
+    text: "Promise me that when life changes, you will still make an effort to find me in it. I don't need perfection. I need consistency, honesty, effort, and a heart that still says, 'I'm here.'"
+  }
 ];
-
-function FloatingHearts() {
-  return <div className="floatingHearts" aria-hidden="true">
-    {["♡","♥","✦","♡","♥","✧","♡","♥"].map((h,i)=><span key={i} style={{"--i":i}}>{h}</span>)}
-  </div>;
-}
 
 export default function Home() {
-  const [open, setOpen] = useState(false);
-  const [showTop, setShowTop] = useState(false);
+  const [showLetter, setShowLetter] = useState(false);
+  const [time, setTime] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 700);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const update = () => {
+      setTime(new Intl.DateTimeFormat("en", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      }).format(new Date()));
+    };
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
   }, []);
 
-  if (!open) return <main className="letterLanding"><FloatingHearts/><div className="landingGlow"/>
-    <section className="envelope">
-      <div className="miniHeart">♥</div><p className="eyebrow">A LETTER FOR MY QUEEN</p>
-      <h1>For the girl<br/>my heart chose.</h1>
-      <p>Some things are too beautiful to fit inside a text message.</p>
-      <button className="primary openLetter" onClick={()=>setOpen(true)}>Open my heart <span>♡</span></button>
-      <div className="scrollHint">made with love · just for you</div>
-    </section>
-  </main>;
+  const openLetter = () => {
+    setShowLetter(true);
+    setTimeout(() => document.getElementById("letter")?.scrollIntoView({ behavior: "smooth" }), 80);
+  };
 
-  return <main className="lovePage"><FloatingHearts/><div className="aurora auroraOne"/><div className="aurora auroraTwo"/>
-    <header className="loveHero"><p className="eyebrow">TO MY QUEEN</p><h1>Distance is a road.<br/><em>It is not the end.</em></h1><div className="heroHeart">♥</div><p className="heroSub">A little promise from my heart to yours.</p></header>
+  return (
+    <main className="lovePage">
+      <div className="aurora auroraOne" />
+      <div className="aurora auroraTwo" />
 
-    <article className="letter">
-      <p className="salutation">My Queen,</p>
-      <p>I don't know exactly what the future will look like, and I won't pretend that loving from far away will always be easy. There will be days when I wish I could reach for your hand instead of reaching for my phone.</p>
-      <p>But I don't want distance to make us strangers. I want it to teach us how to love with intention — how to communicate, trust, be patient, and keep choosing each other even when we cannot physically be together.</p>
-      <p>This isn't a promise that everything will always be perfect. It's something more honest: when things get difficult, I will remember <em>why I chose you.</em></p>
-      <div className="quote"><span>“</span>Two hearts do not need to live in the same place to belong to each other.<span>”</span></div>
-      <p>I want to be your safe place. The person you call after the worst day, the person you tell when something beautiful happens, the person who knows your moods, dreams, fears and random thoughts — and still looks at you with softness.</p>
-      <p>When distance feels heavy, I want us to remember: <strong>we are not waiting for love to begin. We are already building it.</strong></p>
-      <div className="signature"><span>Always choosing you,</span><strong>Mr Patiqula ❤️</strong></div>
-    </article>
+      <div className="floatingHearts" aria-hidden="true">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <span key={index} style={{ "--i": index }}>♥</span>
+        ))}
+      </div>
 
-    <section className="promiseSection"><div className="sectionIntro"><p className="eyebrow">MY SIDE OF THE PROMISE</p><h2>What I promise you.</h2><p>Not perfect promises. Real ones. The kind I want to live, not just say.</p></div>
-      <div className="promiseGrid">{promisesToHer.map(([title,text],i)=><div className="promiseCard" key={title}><div className="promiseNumber">0{i+1}</div><h3>{title}</h3><p>{text}</p></div>)}</div>
-    </section>
+      {!showLetter ? (
+        <section className="letterLanding">
+          <div className="envelope">
+            <div className="miniHeart">♡</div>
+            <p className="eyebrow">OPEN WHEN YOU&apos;RE READY, QUEEN</p>
+            <h1>A letter<br />for you.</h1>
+            <p>
+              Not just a proposal. Not just pretty words.
+              A little promise from my heart to yours.
+            </p>
+            <button className="primary openLetter" onClick={openLetter}>
+              Open my heart <span>♡</span>
+            </button>
+            <div className="scrollHint">there&apos;s something I want you to know</div>
+          </div>
+        </section>
+      ) : (
+        <>
+          <section className="loveHero">
+            <p className="eyebrow">FOR THE GIRL I WANT TO CALL MY QUEEN</p>
+            <h1>Hey, <em>Queen.</em></h1>
+            <div className="heroHeart">♥</div>
+            <p className="heroSub">If distance is the price of finding something real, I&apos;ll learn every mile.</p>
+          </section>
 
-    <section className="promiseSection herSide"><div className="sectionIntro"><p className="eyebrow">YOUR SIDE OF THE PROMISE</p><h2>What I hope you promise me.</h2><p>Not to control your heart — but to protect what we are building together.</p></div>
-      <div className="promiseGrid">{promisesFromHer.map(([title,text])=><div className="promiseCard" key={title}><div className="promiseNumber">♡</div><h3>{title}</h3><p>{text}</p></div>)}</div>
-    </section>
+          <article className="letter" id="letter">
+            <p className="salutation">My Queen,</p>
 
-    <section className="distance"><div className="distanceOrb">∞</div><p className="eyebrow">OUR LONG-DISTANCE RULE</p><h2>Never let miles speak<br/><em>louder than us.</em></h2><p>If we miss each other, we say it. If we are hurt, we talk. If life gets busy, we communicate. If we disagree, we don't disappear. And if distance feels impossible, we remind each other why we started.</p><div className="ruleLine">communication · loyalty · trust · respect · softness · effort</div></section>
+            <p>
+              I don't know if a website can properly explain what I feel for you,
+              but I'm going to try anyway. Because sometimes the heart has too much
+              to say, and a simple <strong>&quot;I love you&quot;</strong> doesn't feel like enough.
+            </p>
 
-    <section className="finalNote"><div className="bigHeart">❤️</div><p className="eyebrow">ONE LAST THING</p><h2>Until the distance becomes<br/><em>“remember when we were far apart?”</em></h2><p>I will keep choosing you in the little things: good mornings, late-night calls, random “I miss you” texts, difficult conversations, quiet days, and every version of us that comes next.</p><div className="finalSignature"><span>With all my heart,</span><strong>Yours, always. ❤️</strong></div></section>
+            <p>
+              I want you to know that if we choose each other, I'm not choosing only
+              the easy days. I'm choosing the late-night conversations, the missed
+              calls, the moments when we miss each other badly, the days when life
+              gets busy, and all the little moments that will make the distance feel
+              smaller.
+            </p>
 
-    {showTop && <button className="backTop" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}>↑</button>}
-  </main>;
+            <p>
+              We may be far from each other physically, but I don't want you to ever
+              feel far from my heart. I want to know how your day went. I want to hear
+              the random stories. I want your good mornings, your sleepy good nights,
+              your laughter, your silence when you need it, and even those little
+              &quot;guess what happened?&quot; messages.
+            </p>
+
+            <div className="quote">
+              <span>“</span>
+              I don't promise that loving from a distance will always be easy.
+              I promise that you won't have to carry the distance alone.
+              <span>”</span>
+            </div>
+
+            <p>
+              I want us to build something where communication is normal, loyalty is
+              natural, respect is constant, softness is safe, and trust is something
+              we grow together—not something we demand from each other.
+            </p>
+
+            <p>
+              So before we call this ours, these are the promises I want to make to you.
+              And beside them are the promises I hope you will make to me—not because
+              love should feel like a contract, but because beautiful relationships
+              deserve beautiful intentions.
+            </p>
+
+            <div className="signature">
+              <span>With all my heart,</span>
+              <strong>Your man. ❤️</strong>
+            </div>
+          </article>
+
+          <section className="promiseSection">
+            <div className="sectionIntro">
+              <p className="eyebrow">THE PROMISES I&apos;M MAKING YOU</p>
+              <h2>What I promise <em>you.</em></h2>
+              <p>These are not promises to sound perfect. They are promises to keep trying, keep communicating, and keep choosing you.</p>
+            </div>
+
+            <div className="promiseGrid">
+              {myPromises.map((promise, index) => (
+                <div className="promiseCard" key={promise.title}>
+                  <div className="promiseNumber">0{index + 1}</div>
+                  <h3>{promise.title}</h3>
+                  <p>{promise.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="distance">
+            <div className="distanceOrb">∞</div>
+            <p className="eyebrow">FOR THE MILES BETWEEN US</p>
+            <h2>Distance is a chapter.<br /><em>Not the ending.</em></h2>
+            <p>
+              There will be days when I wish I could simply walk over to you,
+              hold your hand, look at you, and say everything without a screen
+              between us. Until that day, we'll use every call, every message,
+              every voice note and every little effort to close the gap.
+            </p>
+            <div className="ruleLine">same sky · different places · one heart</div>
+          </section>
+
+          <section className="promiseSection herSide">
+            <div className="sectionIntro">
+              <p className="eyebrow">AND THESE ARE THE ONES I HOPE YOU&apos;LL GIVE ME</p>
+              <h2>What I hope <em>you promise.</em></h2>
+              <p>You don't have to promise perfection. Promise me effort, honesty, and a heart that keeps coming back to us.</p>
+            </div>
+
+            <div className="promiseGrid">
+              {herPromises.map((promise, index) => (
+                <div className="promiseCard" key={promise.title}>
+                  <div className="promiseNumber">♡ 0{index + 1}</div>
+                  <h3>{promise.title}</h3>
+                  <p>{promise.text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="finalNote">
+            <p className="eyebrow">ONE LAST THING</p>
+            <h2>If it&apos;s you, <em>I&apos;ll make the distance worth it.</em></h2>
+            <p>
+              I don't want a relationship that only looks beautiful from the outside.
+              I want the real thing—the kind where two people can be honest, vulnerable,
+              loyal, playful, patient, and completely themselves.
+            </p>
+            <p>
+              So if you choose me, Queen, I will choose you too. Not once.
+              Not only when everything feels perfect. I will choose you in the
+              little ways, over and over again.
+            </p>
+            <div className="finalSignature">
+              <span>Always yours,</span>
+              <strong>Mr. Patiqula ❤️</strong>
+              <small>{time}</small>
+            </div>
+          </section>
+
+          <button className="backTop" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">↑</button>
+        </>
+      )}
+    </main>
+  );
 }
