@@ -109,7 +109,7 @@ export default function Home() {
         <section className="letterLanding">
           <div className="envelope">
             <div className="miniHeart">♡</div>
-            <p className="eyebrow">OPEN WHEN YOU&apos;RE READY, QUEEN</p>
+            <p className="eyebrow">OPEN WHEN YOU&apos;RE READY, MI AMORCITO</p>
             <h1>A letter<br />for you.</h1>
             <p>
               Not just a proposal. Not just pretty words.
@@ -124,14 +124,14 @@ export default function Home() {
       ) : (
         <>
           <section className="loveHero">
-            <p className="eyebrow">FOR THE GIRL I WANT TO CALL MY QUEEN</p>
-            <h1>Hey, <em>Queen.</em></h1>
+            <p className="eyebrow">FOR THE GIRL I CALL MI AMORCITO</p>
+            <h1>Hey, <em>Mi Amorcito.</em></h1>
             <div className="heroHeart">♥</div>
             <p className="heroSub">If distance is the price of finding something real, I&apos;ll learn every mile.</p>
           </section>
 
           <article className="letter" id="letter">
-            <p className="salutation">My Queen,</p>
+            <p className="salutation">Mi Amorcito,</p>
 
             <p>
               I don't know if a website can properly explain what I feel for you,
@@ -239,7 +239,7 @@ export default function Home() {
               loyal, playful, patient, and completely themselves.
             </p>
             <p>
-              So if you choose me, Queen, I will choose you too. Not once.
+              So if you choose me, Mi Amorcito, I will choose you too. Not once.
               Not only when everything feels perfect. I will choose you in the
               little ways, over and over again.
             </p>
