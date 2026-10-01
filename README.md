@@ -1,15 +1,19 @@
 # Queen ❤️
 
-A private romantic proposal site for Queen.
+A romantic long-distance love letter website made for Queen.
 
-## Simple response setup
+## What it is
 
-This version does **not** use Resend, API keys, databases, or email APIs.
+A single-page romantic experience with:
+- an opening "Open my heart" screen
+- a long love letter
+- promises from him
+- promises hoped for from her
+- long-distance relationship principles
+- floating hearts, glowing glass cards, soft animations, and responsive mobile design
 
-Create a Google Form with questions for Queen's answer and promises, then place the form link in `app/page.jsx` as `GOOGLE_FORM_URL`.
+There are no forms, response collection, databases, email APIs, or environment variables.
 
-Responses will be stored in Google Forms/Google Sheets, where you can enable email notifications.
+## Deploy
 
-## Vercel
-
-No environment variables are required for the proposal site.
+This is a Next.js/Vercel-ready static experience.
